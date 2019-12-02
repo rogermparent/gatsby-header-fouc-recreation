@@ -5,7 +5,7 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
+import React, {useState, useEffect} from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
@@ -23,9 +23,21 @@ const Layout = ({ children }) => {
     }
   `)
 
+  const [path, setPath] = useState('')
+  useEffect(()=>{
+    setPath(
+      (typeof window !== 'undefined') ?
+      window.location.pathname :
+      ''
+    )
+  })
+
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
+      <Header
+        siteTitle={data.site.siteMetadata.title}
+        path={path}
+      />
       <div
         style={{
           margin: `0 auto`,
