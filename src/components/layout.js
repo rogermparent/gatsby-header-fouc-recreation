@@ -12,7 +12,7 @@ import { useStaticQuery, graphql } from "gatsby"
 import Header from "./header"
 import "./layout.css"
 
-const Layout = ({ children }) => {
+const Layout = ({ children, path }) => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -22,15 +22,6 @@ const Layout = ({ children }) => {
       }
     }
   `)
-
-  const [path, setPath] = useState('')
-  useEffect(()=>{
-    setPath(
-      (typeof window !== 'undefined') ?
-      window.location.pathname :
-      ''
-    )
-  })
 
   return (
     <>
