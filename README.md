@@ -17,12 +17,14 @@ For something simple like the default starter that just exports components from 
 ```sh
 git pull https://github.com/rogermparent/gatsby-header-fouc-recreation.git
 yarn
-gatsby develop
+gatsby build && gatsby serve
 ```
+
+You'll have to use `build` and `serve`, as opposed to `develop`, as the bug is inherently tied to static generation and `develop` doesn't do that.
 
 ### Example Fix
 
 ```sh
 git checkout fix
-gatsby develop
+gatsby build && gatsby serve
 ```
